@@ -73,9 +73,9 @@ const servisiPodaci = [
 // =========================================
 const map = L.map('realMap').setView([45.3290, 14.4380], 14);
 
-// Standardni OpenStreetMap (ne traži API ključ)
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
+// Esri ArcGIS karta (radi bez API ključa i bez blokade kod lokalnog otvaranja)
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri',
     maxZoom: 19
 }).addTo(map);
 
