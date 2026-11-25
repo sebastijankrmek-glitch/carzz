@@ -3,122 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoFix - Pronađi auto servis</title>
+    <title>Carzz — Web aplikacija za servis auta i lokacije radionica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS za pravu kartu -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <div class="logo">🚗 AutoFix</div>
-    <nav>
-        <a href="#" class="active">Početna</a>
-        <a href="#servisi">Pronađi servis</a>
-        <a href="#rezervacije">Rezervacije</a>
-        <a href="#profil">Profil</a>
-    </nav>
-    <button class="login">Prijava</button>
-</header>
 
-<main>
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <div class="logo-icon">C</div>
+                Car<span>zz</span>
+            </a>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#znacajke">Značajke</a></li>
+                    <li><a href="#servisi">Lokacije servisa</a></li>
+                    <li><a href="#kako-radi">Kako radi</a></li>
+                    <li><a href="#pokreni">Web aplikacija</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#pokreni" class="btn btn-primary">Otvori web aplikaciju</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Izbornik">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-text">
-            <h1>Pronađi pravi servis<br>za svoj automobil.</h1>
-            <p>Jednostavno pronađi auto servis u svojoj blizini, usporedi ocjene i pronađi uslugu koja ti treba.</p>
-            <div class="search-box">
-                <input type="text" placeholder="Unesi grad ili poštanski broj">
-                <select>
-                    <option>Sve usluge</option>
-                    <option>Mehaničarski servis</option>
-                    <option>Zamjena guma</option>
-                    <option>Zamjena ulja</option>
-                    <option>Dijagnostika</option>
-                    <option>Limarija i lakiranje</option>
-                </select>
-                <button>Pretraži</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="services" id="servisi">
-        <div class="section-heading">
+        <div class="container hero-grid">
             <div>
-                <h2>Auto servisi u blizini</h2>
-                <p>Pronađi servis koji odgovara tvojim potrebama.</p>
+                <div class="badge">Web aplikacija za održavanje vozila • Bez instalacije</div>
+                <h1>Sve za servis vašeg auta direktno u <span>pregledniku.</span></h1>
+                <p>Carzz je moderna web aplikacija koja prati vaše servisne intervale, čuva digitalnu knjižicu i povezuje vas s najbližim provjerenim autoservisima u nekoliko klikova.</p>
+                <div class="hero-actions">
+                    <a href="#pokreni" class="btn btn-primary">Pokreni aplikaciju besplatno</a>
+                    <a href="#servisi" class="btn btn-secondary">Istraži lokacije servisa</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>450+</h3>
+                        <p>Partner servisa</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>35.000+</h3>
+                        <p>Aktivnih vozača</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100% Web</h3>
+                        <p>Radi na svakom uređaju</p>
+                    </div>
+                </div>
             </div>
-            <span class="result-count">Popularni servisi</span>
+
+            <!-- Browser / Web App Mockup -->
+            <div class="browser-mockup">
+                <div class="browser-bar">
+                    <div class="browser-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="browser-url">app.carzz.hr/garaza</div>
+                </div>
+
+                <div class="app-preview-body">
+                    <div class="app-card">
+                        <div class="app-car-header">
+                            <span class="app-car-title">VW Golf 8 • 2.0 TDI</span>
+                            <span class="app-tag">Sve uredno</span>
+                        </div>
+                        <div class="muted small">Mali servis za 2.400 km</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-meta">
+                            <span>112.600 km</span>
+                            <span>Cilj: 115.000 km</span>
+                        </div>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="preview-subtitle">Najbliži dostupni servis</div>
+                        <div class="mini-map">
+                            <div class="map-pin">AutoCentar Kvarner • 1.2 km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="service-layout">
-            <div class="service-list">
-                <article class="service-card">
-                    <div class="service-image">🔧</div>
-                    <div class="service-info">
-                        <h3>Auto Servis Zagreb</h3>
-                        <span class="rating">★ 4.9</span>
-                        <p>📍 Zagreb, Hrvatska</p>
-                        <p>🔧 Mehanika, dijagnostika</p>
-                        <p class="open">● Otvoreno</p>
-                        <button>Pregledaj servis</button>
-                    </div>
-                </article>
-
-                <article class="service-card">
-                    <div class="service-image">🚘</div>
-                    <div class="service-info">
-                        <h3>Brzi Auto Servis</h3>
-                        <span class="rating">★ 4.7</span>
-                        <p>📍 Zagreb, Hrvatska</p>
-                        <p>🔧 Ulje, gume, mehanika</p>
-                        <p class="open">● Otvoreno</p>
-                        <button>Pregledaj servis</button>
-                    </div>
-                </article>
-
-                <article class="service-card">
-                    <div class="service-image">⚙️</div>
-                    <div class="service-info">
-                        <h3>Auto Expert</h3>
-                        <span class="rating">★ 4.8</span>
-                        <p>📍 Zagreb, Hrvatska</p>
-                        <p>🔧 Dijagnostika, elektronika</p>
-                        <p class="closed">● Zatvoreno</p>
-                        <button>Pregledaj servis</button>
-                    </div>
-                </article>
+    <!-- Features Section -->
+    <section id="znacajke">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sve što vašem automobilu treba</h2>
+                <p>Pristupite svojim podacima s računala, tableta ili mobitela bez preuzimanja i instalacije.</p>
             </div>
 
-            <div class="map" aria-label="Ilustrativni prikaz karte lokacija servisa">
-                <div class="map-label">📍 Karta lokacija servisa</div>
-                <div class="map-pin pin1">🔧</div>
-                <div class="map-pin pin2">🔧</div>
-                <div class="map-pin pin3">🔧</div>
-                <div class="map-pin pin4">🔧</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📒</div>
+                    <h3>Digitalna servisna knjižica</h3>
+                    <p>Spremite sve račune, zahvate i zamijenjene dijelove na jedno sigurno mjesto dostupno u svakom trenutku.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Pametni podsjetnici</h3>
+                    <p>Automatske obavijesti za mali i veliki servis, tehnički pregled, osiguranje i sezonsku zamjenu guma.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Interaktivna karta servisa</h3>
+                    <p>Pregledajte lokacije automehaničara, vulkanizera i autoelektričara uz stvarne recenzije drugih vozača.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💶</div>
+                    <h3>Procjena troškova unaprijed</h3>
+                    <p>Zatražite ponudu od više servisa odjednom i usporedite cijene prije nego ostavite vozilo u radionici.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⛽</div>
+                    <h3>Praćenje potrošnje i troškova</h3>
+                    <p>Jednostavno bilježite točenje goriva i pratite mjesečnu statistiku ukupnih troškova vašeg vozila.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🆘</div>
+                    <h3>SOS pomoć na cesti</h3>
+                    <p>U slučaju kvara jednim klikom podijelite svoju lokaciju s najbližom vučnom službom.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2>Zašto koristiti AutoFix?</h2>
-        <div class="feature-grid">
-            <div class="feature">
-                <h3>📍 Lokacije</h3>
-                <p>Pronađi auto servise u svojoj blizini.</p>
+    <!-- Interactive Service Locations Preview -->
+    <section id="servisi" class="locations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pronađite servis na karti</h2>
+                <p>Kliknite na servis na popisu ili pin na karti kako biste vidjeli točnu lokaciju u Rijeci.</p>
             </div>
-            <div class="feature">
-                <h3>⭐ Recenzije</h3>
-                <p>Usporedi ocjene i iskustva drugih korisnika.</p>
+
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" data-filter="all">Svi servisi (5)</button>
+                <button class="filter-btn" data-filter="servis">Mali i veliki servis</button>
+                <button class="filter-btn" data-filter="vulkanizer">Vulkanizer</button>
+                <button class="filter-btn" data-filter="elektrika">Autoelektrika</button>
             </div>
-            <div class="feature">
-                <h3>📅 Rezervacije</h3>
-                <p>Jednostavnije planiraj termin servisa.</p>
+
+            <div class="map-showcase">
+                <!-- Popis servisa (generira se automatski iz script.js) -->
+                <div class="service-list" id="serviceList"></div>
+
+                <!-- Prava interaktivna karta -->
+                <div class="interactive-map-box">
+                    <div id="realMap"></div>
+                    <div class="map-info-bar" id="mapInfoBar">Odaberite servis na popisu ili karti</div>
+                </div>
             </div>
         </div>
     </section>
-</main>
 
-<footer>
-    <h2>AutoFix</h2>
-    <p>Pronađi servis. Održavaj automobil. Vozi bez brige.</p>
-    <p>© 2026 AutoFix</p>
-</footer>
+    <!-- How It Works -->
+    <section id="kako-radi">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kako Carzz web aplikacija radi?</h2>
+                <p>Od otvaranja u pregledniku do rezerviranog termina u tri jednostavna koraka.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Otvorite web aplikaciju</h3>
+                    <p>Prijavite se putem preglednika na računalu ili mobitelu i unesite osnovne podatke o svom vozilu.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Odaberite servis na karti</h3>
+                    <p>Pregledajte najbliže radionice, njihove slobodne termine i okvirne cijene usluga.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Rezervirajte i pratite</h3>
+                    <p>Potvrdite termin jednim klikom, a nakon zahvata račun se automatski sprema u vašu digitalnu knjižicu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="pokreni">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Spremni za bezbrižnu vožnju uz Carzz?</h2>
+                <p>Pokrenite Carzz web aplikaciju odmah u svom pregledniku — potpuno besplatno i bez potrebe za instalacijom.</p>
+                <div class="hero-actions center">
+                    <a href="https://app.carzz.hr" class="btn btn-primary">Pokreni Carzz Web App</a>
+                    <a href="#servisi" class="btn btn-secondary">Pregledaj servise u blizini</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo footer-logo">
+                <div class="logo-icon small-icon">C</div>
+                Car<span>zz</span>
+            </div>
+            <div class="footer-links">
+                <a href="#znacajke">Značajke</a>
+                <a href="#servisi">Lokacije servisa</a>
+                <a href="#kako-radi">Kako radi</a>
+                <a href="#">Uvjeti korištenja</a>
+            </div>
+            <div>© 2026 Carzz Web App. Sva prava pridržana.</div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS za pravu kartu -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
